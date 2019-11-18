@@ -4,6 +4,7 @@ import styled from 'styled-components'
 const Form = styled.form`
 
 `
+
 const Input = styled.input`
 
 `
@@ -15,9 +16,11 @@ const InputWrapper = styled.div`
     flex-direction: column;
     border: 1px solid red;
 `
+
 const Label = styled.label`
     margin: 2% 0;
 `
+
 const SubmitButton = styled.button`
     width: 30%;
     margin: 2% auto;
@@ -25,13 +28,13 @@ const SubmitButton = styled.button`
     background-color: blue;
 `
 
-const AddAssignment = (props) => {
+const AddAssignment = () => {
    const [assignments, setAssignments] = useState([])
    console.log({ assignments })
    const [add, setAdd] = useState({
-      name: '',
+      project_name: '',
       type: '',
-      dueDate: ''
+      deadline: ''
    })
    console.log({ add })
 
@@ -44,7 +47,6 @@ const AddAssignment = (props) => {
       setAssignments([...assignments, add])
    }
 
-
    return (
 
       <Form onSubmit={handleSubmit}>
@@ -52,7 +54,7 @@ const AddAssignment = (props) => {
             <Label>Name of Assignment:
                 <Input
                   type='text'
-                  name='name'
+                  name='project_name'
                   placeholder='Project/Paper Name'
                   onChange={handleChange}
                />
@@ -70,13 +72,12 @@ const AddAssignment = (props) => {
             <Label>Due Date:
                     <Input
                   type='date'
-                  name='dueDate'
+                  name='deadline'
                   onChange={handleChange}
                />
             </Label>
             <SubmitButton type='submit'>Add Assignment</SubmitButton>
          </InputWrapper>
-
       </Form>
 
    )
