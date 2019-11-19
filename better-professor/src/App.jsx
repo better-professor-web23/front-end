@@ -23,6 +23,7 @@ function App() {
           <PrivateRoute path='/addassignment' component={AddAssignment}/>
           <PrivateRoute path='/assignments' component={Assignments}/>
           <PrivateRoute path='/createstudent' component={CreateStudent}/>
+          {/* <PrivateRoute path='/createstudent/:id' render = {props => <CreateStudent {...props}/>}/> */}
           <PrivateRoute path='/reminders' component={Reminders}/>
       </Switch>
     </div>

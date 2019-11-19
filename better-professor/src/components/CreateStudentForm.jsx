@@ -4,7 +4,8 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 const CreateStudentForm = () => {
     const [add, setAdd] = useState({
         student_name: '', 
-        major: ''
+        major: '',
+        user_id: ''
     })
     const handleChange = event => {
         setAdd({...add, [event.target.name]:event.target.value})
@@ -35,6 +36,13 @@ const CreateStudentForm = () => {
                 name="major"
                 placeholder="Enter Student Major (optional)"
                 value={add.major}
+                onChange={handleChange}
+                />
+                    <input
+                type='text'
+                name="user_id"
+                placeholder="enter user id "
+                value={add.user_id}
                 onChange={handleChange}
                 />
                 <button type="submit">Create Student</button>
