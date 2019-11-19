@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import axios from 'axios'
+import axiosWithAuth from '../utils/axiosWithAuth'
 
 const CardsWrapperDiv = styled.div`
 
@@ -18,24 +18,32 @@ const AssignmentDeadlineH3 = styled.h3`
 
 `
 
-const AssignmentList = () => {
+const AssignmentList = (props) => {
    const [assignmentlist, setAssignmentList] = useState([]);
    console.log({ assignmentlist })
+   console.log({ props })
    useEffect(() => {
-      axios.get('https://better-professor-back-end.herokuapp.com/')
+      const id = props.match.params.id
+      axiosWithAuth()
+         .get(`https://better-professor-back-end.herokuapp.com/projects/students/${id}`)
          .then(re => {
             console.log({ re })
-            setAssignmentList([...assignmentlist, re.data])
+            setAssignmentList([...assignmentlist, ...re.data])
+         })
+         .catch(error => {
+            console.log(error.message)
          })
 
-   }, [])
+   }, [props.match.params.id])
 
    return (
       <CardsWrapperDiv>Assignments List
-         {assignmentlist.map((item, index) => {
+         {assignmentlist.map(item => {
          return (
-            <AssignmentCardDiv key={index}>
-               {item}
+            <AssignmentCardDiv key={item.id}>
+               <AssignmentNameH2>{item.project_name}</AssignmentNameH2>
+               <AssignmentDeadlineH3>Deadline: {item.deadline}</AssignmentDeadlineH3>
+               <AssignmentDeadlineH3>Deadline Type: {item.deadline_type}</AssignmentDeadlineH3>
             </AssignmentCardDiv>
          )
       })}
