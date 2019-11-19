@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "formik": "^2.0.4",
+    "react": "^16.12.0"
+  }
+}
