@@ -36,7 +36,6 @@ const AddAssignment = (props) => {
    const [add, setAdd] = useState({
       project_name: '',
       deadline: '',
-      deadline_type: '',
       student_id: id
    })
 
@@ -70,13 +69,6 @@ const AddAssignment = (props) => {
                   type='date'
                   name='deadline'
                   onChange={handleChange}
-               />
-            </Label>
-            <Label>Deadline Type:
-               <Input
-                  type='text'
-                  name='deadline_type'
-                  onchange={handleChange}
                />
             </Label>
             <SubmitButton type='submit'>Add Assignment</SubmitButton>
