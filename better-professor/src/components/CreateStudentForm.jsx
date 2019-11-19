@@ -1,10 +1,10 @@
 import React, {useState} from "react";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 const CreateStudentForm = () => {
     const [add, setAdd] = useState({
-        id: Date.now(), 
-        first_name: '', 
-        last_name: ''
+        student_name: '', 
+        major: ''
     })
     const handleChange = event => {
         setAdd({...add, [event.target.name]:event.target.value})
@@ -13,26 +13,28 @@ const CreateStudentForm = () => {
 
     const submitForm = event => {
         event.preventDefault();
-        // call in axios with auth here 
-        // post request 
-        // then request 
+        axiosWithAuth()
+        .post(`https://better-professor-back-end.herokuapp.com/students`, add)
+        .then( response => {
+            console.log('response after adding student', response.data);
+        })
     }
 
     return (
         <div>
-            <form value={add.id} onSubmit={submitForm}>
+            <form onSubmit={submitForm}>
                 <input
                 type="text"
-                name="first_name"
-                placeholder="student first name"
-                value={add.first_name}
+                name="student_name"
+                placeholder="Enter Student Name"
+                value={add.student_name}
                 onChange={handleChange}
                 />
                 <input
                 type='text'
-                name="last_name"
-                placeholder="student last name"
-                value={add.last_name}
+                name="major"
+                placeholder="Enter Student Major (optional)"
+                value={add.major}
                 onChange={handleChange}
                 />
                 <button type="submit">Create Student</button>

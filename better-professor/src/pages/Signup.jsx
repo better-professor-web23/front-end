@@ -1,9 +1,13 @@
 import React from "react";
 
-const Signup = () => {
+import SignupForm from "../components/SignupForm";
+const Signup = (props) => {
     return (
         <div>
-            <h1>Signup</h1>
+            <h1>Sign Up </h1>
+           <SignupForm
+           history={props.history}
+           />
         </div>
     )
 }
