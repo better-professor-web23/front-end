@@ -15,7 +15,7 @@ const CreateStudentForm = () => {
     const submitForm = event => {
         event.preventDefault();
         axiosWithAuth()
-        .post(`https://better-professor-back-end.herokuapp.com/students`, add)
+        .post(`https://better-professor-back-end.herokuapp.com/students/`, add)
         .then( response => {
             console.log('response after adding student', response.data);
         })

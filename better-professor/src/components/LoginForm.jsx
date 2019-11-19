@@ -20,7 +20,7 @@ const handleSubmit = event => {
   .post('https://better-professor-back-end.herokuapp.com/users/login', login)
   .then( response => {
     console.log('response from post', response.data);
-    localStorage.setItem('token', response.data.payload)
+    localStorage.setItem('token', response.data.token)
     setLogin({...login, isLoggedIn: true})
     props.history.push('/');
   })

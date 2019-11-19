@@ -1,32 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
 
-const Form = styled.form`
+import axiosWithAuth from "../utils/axiosWithAuth";
 
-`
-
-const Input = styled.input`
-
-`
-
-const InputWrapper = styled.div`
-    max-width: 400px;
-    margin: 0 auto;
-    display:flex;
-    flex-direction: column;
-    border: 1px solid red;
-`
-
-const Label = styled.label`
-    margin: 2% 0;
-`
-
-const SubmitButton = styled.button`
-    width: 30%;
-    margin: 2% auto;
-    color: white;
-    background-color: blue;
-`
 
 const AddAssignment = () => {
    const [assignments, setAssignments] = useState([])
@@ -34,7 +10,8 @@ const AddAssignment = () => {
    const [add, setAdd] = useState({
       project_name: '',
       type: '',
-      deadline: ''
+      deadline: '',
+      student_id: ''
    })
    console.log({ add })
 
@@ -44,7 +21,11 @@ const AddAssignment = () => {
 
    const handleSubmit = event => {
       event.preventDefault();
-      setAssignments([...assignments, add])
+      axiosWithAuth()
+      .post(`https://better-professor-back-end.herokuapp.com/projects`, add)
+      .then( response => {
+          console.log('response after adding assignment', response.data);
+      })
    }
 
    return (
@@ -76,6 +57,13 @@ const AddAssignment = () => {
                   onChange={handleChange}
                />
             </Label>
+            <Label>
+                    <Input
+                  type='text'
+                  name='student_id'
+                  onChange={handleChange}
+               />
+            </Label>
             <SubmitButton type='submit'>Add Assignment</SubmitButton>
          </InputWrapper>
       </Form>
@@ -86,3 +74,30 @@ const AddAssignment = () => {
 
 
 export default AddAssignment
+
+const Form = styled.form`
+
+`
+
+const Input = styled.input`
+
+`
+
+const InputWrapper = styled.div`
+    max-width: 400px;
+    margin: 0 auto;
+    display:flex;
+    flex-direction: column;
+    border: 1px solid red;
+`
+
+const Label = styled.label`
+    margin: 2% 0;
+`
+
+const SubmitButton = styled.button`
+    width: 30%;
+    margin: 2% auto;
+    color: white;
+    background-color: blue;
+`
