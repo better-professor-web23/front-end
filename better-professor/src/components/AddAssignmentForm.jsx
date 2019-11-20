@@ -1,19 +1,25 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 
-const AddAssignment = () => {
-   const [assignments, setAssignments] = useState([])
-   console.log({ assignments })
+const AddAssignment = (props) => {
+
+   const id = props.match.params.id
    const [add, setAdd] = useState({
       project_name: '',
+<<<<<<< HEAD
       type: '',
       deadline: '',
       student_id: ''
+=======
+      deadline: '',
+      student_id: id
+>>>>>>> da690f42504d8c36e6142950c17d80a888a94828
    })
-   console.log({ add })
 
    const handleChange = event => {
       setAdd({ ...add, [event.target.name]: event.target.value })
@@ -22,10 +28,17 @@ const AddAssignment = () => {
    const handleSubmit = event => {
       event.preventDefault();
       axiosWithAuth()
+<<<<<<< HEAD
       .post(`https://better-professor-back-end.herokuapp.com/projects`, add)
       .then( response => {
           console.log('response after adding assignment', response.data);
       })
+=======
+         .post(`https://better-professor-back-end.herokuapp.com/projects/`, add)
+         .then(response => {
+            console.log('response after adding student', response.data);
+         })
+>>>>>>> da690f42504d8c36e6142950c17d80a888a94828
    }
 
    return (
@@ -40,17 +53,7 @@ const AddAssignment = () => {
                   onChange={handleChange}
                />
             </Label>
-            <Label>Type of Assignment:
-                <Input
-                  as='select'
-                  name='type'
-                  onChange={handleChange}
-               >
-                  <option value='Project'>Project</option>
-                  <option value='Research Paper'>Research Paper</option>
-               </Input>
-            </Label>
-            <Label>Due Date:
+            <Label>Deadline:
                     <Input
                   type='date'
                   name='deadline'
@@ -65,6 +68,7 @@ const AddAssignment = () => {
                />
             </Label>
             <SubmitButton type='submit'>Add Assignment</SubmitButton>
+
          </InputWrapper>
       </Form>
 

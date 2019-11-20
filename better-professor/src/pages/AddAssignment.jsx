@@ -1,10 +1,11 @@
 import React from 'react';
 import AddAssignmentForm from '../components/AddAssignmentForm'
 
-const AddAssignment = () => {
+const AddAssignment = (props) => {
+
     return (
         <div>
-            <AddAssignmentForm />
+            <AddAssignmentForm {...props} />
         </div>
     )
 }

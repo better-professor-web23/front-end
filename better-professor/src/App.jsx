@@ -20,7 +20,7 @@ function App() {
         <Route path='/signup' component={Signup} />
         <Route path='/login' component={Login} />
         <PrivateRoute exact path='/' component={Dashboard} />
-        <PrivateRoute path='/addassignment' component={AddAssignment} />
+        <PrivateRoute path='/addassignment/:id' component={AddAssignment} />
         <PrivateRoute exact path='/assignments/:id' component={Assignments} />
         <PrivateRoute path='/createstudent' component={CreateStudent} />
         <PrivateRoute path='/reminders' component={Reminders} />
