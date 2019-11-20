@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import axiosWithAuth from '../utils/axiosWithAuth';
 import StudentCard from "./StudentCard"
+import MessageForm from "./MessageForm";
 
 const StudentList = (props) => {
    const [students, setStudents] = useState([])
@@ -23,6 +24,7 @@ const StudentList = (props) => {
          return (
             <div>
                <StudentCard {...student} />
+               <MessageForm {...student}/>
             </div>
          )
       })}

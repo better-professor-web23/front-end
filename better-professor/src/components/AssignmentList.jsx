@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axiosWithAuth from '../utils/axiosWithAuth'
+import { Link } from 'react-router-dom'
 
 import { connect } from 'react-redux';
 // import {fetchAssignments} from "../actions" 
@@ -23,6 +24,8 @@ const AssignmentDeadlineH3 = styled.h3`
 
 const AssignmentList = (props) => {
    const [assignmentlist, setAssignmentList] = useState([]);
+
+
    console.log({ assignmentlist })
    console.log({ props })
    useEffect(() => {
@@ -39,6 +42,22 @@ const AssignmentList = (props) => {
 
    }, [props.match.params.id])
 
+   const sendMessage = () => {
+      const id = props.match.params.id
+      props.history.push(`/message/${id}`)
+
+   }
+
+//    const Assignment = (props) => {
+//       const id = props.match.params.id
+//       return (
+//           <div>
+//               <Link to={`/addassignment/${id}`}>Add Assignment</Link>
+//               <AssignmentList {...props} />
+//           </div>
+//       )
+//   }
+  
 
 
    // const deleteAssignment = () => {
@@ -61,7 +80,7 @@ const AssignmentList = (props) => {
                <AssignmentDeadlineH3>Deadline Type: {item.deadline_type}</AssignmentDeadlineH3>
                <button>Edit</button>
                <button >Delete</button>
-               <button>Send Reminder</button>
+               <button onClick={sendMessage}>Send Message</button>
             </AssignmentCardDiv>
          )
       })}

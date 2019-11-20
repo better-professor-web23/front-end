@@ -10,7 +10,7 @@ import Assignments from "./pages/Assignments";
 import CreateStudent from "./pages/CreateStudent";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
-import Reminders from "./pages/Reminders";
+import Message from "./pages/Message";
 import Signup from "./pages/Signup";
 
 
@@ -24,7 +24,7 @@ function App() {
         <PrivateRoute path='/addassignment/:id' component={AddAssignment} />
         <PrivateRoute exact path='/assignments/:id' component={Assignments} />
         <PrivateRoute path='/createstudent' component={CreateStudent} />
-        <PrivateRoute path='/reminders' component={Reminders} />
+        <PrivateRoute path='/message/:id' component={Message} />
       </Switch>
     </div>
   );

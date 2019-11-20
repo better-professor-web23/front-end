@@ -31,7 +31,7 @@ const SubmitButton = styled.button`
 const AddAssignment = (props) => {
 
    const id = props.match.params.id
-   console.log('testes', id);
+   console.log('testing', id);
    const [add, setAdd] = useState({
       project_name: '',
       deadline: '',
