@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import axiosWithAuth from '../utils/axiosWithAuth';
+import { Link } from 'react-router-dom'
 
 const StudentList = (props) => {
    const [students, setStudents] = useState([])
@@ -19,9 +20,11 @@ const StudentList = (props) => {
    return (
       <div>{students.map(student => {
          return (
-            <div>
-               {student.student_name}
-            </div>
+            <Link to={`/assignments/${student.id}`}>
+               <div>
+                  {student.student_name}
+               </div>
+            </Link>
          )
       })}
       </div>

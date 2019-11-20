@@ -43,7 +43,6 @@ const AssignmentList = (props) => {
             <AssignmentCardDiv key={item.id}>
                <AssignmentNameH2>{item.project_name}</AssignmentNameH2>
                <AssignmentDeadlineH3>Deadline: {item.deadline}</AssignmentDeadlineH3>
-               <AssignmentDeadlineH3>Deadline Type: {item.deadline_type}</AssignmentDeadlineH3>
             </AssignmentCardDiv>
          )
       })}
