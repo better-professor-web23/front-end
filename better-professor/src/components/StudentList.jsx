@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
+import Reminders from "../pages/Reminders";
 
 
 import StudentCard from "./StudentCard"
@@ -19,9 +20,12 @@ const StudentList = (props) => {
          })
    }, [])
    return (
-      <div>{students.map(student => {
+      <div>{students.map((student, index) => {
          return (
-            <StudentCard key={student.id} {...student} />
+            <div key={index}>
+            <StudentCard key={student.student_name} {...student} />
+            <Reminders key={student.id} {...student}/>
+            </div>
          )
       })}
       </div>
