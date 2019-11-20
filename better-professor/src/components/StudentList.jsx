@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import StudentCard from "./StudentCard"
+import MessageForm from "./MessageForm";
 
 const StudentList = (props) => {
    const [students, setStudents] = useState([])
@@ -17,9 +18,13 @@ const StudentList = (props) => {
          })
    }, [])
    return (
-      <div>{students.map(student => {
+      <div>
+      {students.map(student => {
          return (
-            <StudentCard key={student.id} {...student} />
+            <div>
+               <StudentCard {...student} />
+               <MessageForm {...student}/>
+            </div>
          )
       })}
       </div>
