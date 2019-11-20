@@ -1,24 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import { Route, Switch } from "react-router-dom";
+
+import PrivateRoute from "./components/PrivateRoute";
+
+import AddAssignment from "./pages/AddAssignment";
+import Assignments from "./pages/Assignments";
+import CreateStudent from "./pages/CreateStudent";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Reminders from "./pages/Reminders";
+import Signup from "./pages/Signup";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <Switch>
+        <Route path='/signup' component={Signup} />
+        <Route path='/login' component={Login} />
+        <PrivateRoute exact path='/' component={Dashboard} />
+        <PrivateRoute path='/addassignment/:id' component={AddAssignment} />
+        <PrivateRoute exact path='/assignments/:id' component={Assignments} />
+        <PrivateRoute path='/createstudent' component={CreateStudent} />
+        <PrivateRoute path='/reminders' component={Reminders} />
+      </Switch>
     </div>
   );
 }
