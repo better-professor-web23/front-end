@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 import Message from "./pages/Message";
 import Signup from "./pages/Signup";
 import NavigationHeader from './components/Navigation'
+import Reminders from './pages/Reminders'
 
 
 function App() {

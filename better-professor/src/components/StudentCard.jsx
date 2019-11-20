@@ -5,10 +5,11 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 
 const StudentCard = props => {
 
+    console.log('testing out props')
+
     // const [erase, setErase] = useState({});
 
     const id = props.id;
-    
 
     const deleteStudent = () => {
     axiosWithAuth()
@@ -30,11 +31,11 @@ const StudentCard = props => {
 
     return (
         <div className="student-card">
-            <h2>Student</h2>
-            <div>
-                <Link to={`/assignments/${props.id}`}>Name: {props.student_name}</Link>
-                <p>Major: {props.major}</p>
-            </div>
+            <h3>{props.student_name}</h3>
+            <p>Major: {props.major}</p>
+            <Link to ={`/assignments/${props.id}`}>
+                <button>View Student Assignments</button>
+            </Link>
             <button>Edit</button>
             <button onClick={deleteStudent}>Delete</button>
 

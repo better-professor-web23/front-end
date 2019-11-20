@@ -1,31 +1,32 @@
-import React, {useState, useEffect}from "react";
+import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth"
 
 
 const ReminderList = (props) => {
 
-        const[reminders, setReminders] = useState([])
-        const id = props.id
-    useEffect(()=>{
-        
+    const [reminders, setReminders] = useState([])
+    console.log('reminderlist', props)
+    const id = props.match.params.id
+    useEffect(() => {
+
         axiosWithAuth()
             .get(`https://better-professor-back-end.herokuapp.com/messages/students/${id}`)
-            .then(res =>{
+            .then(res => {
                 console.log(res);
                 setReminders([...reminders, ...res.data])
             })
 
     }, [id])
 
-    return(
+    return (
         <div>
-            {reminders.map(reminder=> {
-                return(
+            {reminders.map(reminder => {
+                return (
                     <p>{reminder.message}</p>
                 );
 
             })}
-        
+
         </div>
     )
 };
