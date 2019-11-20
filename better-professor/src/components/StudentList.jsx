@@ -4,6 +4,7 @@ import Reminders from "../pages/Reminders";
 
 
 import StudentCard from "./StudentCard"
+import MessageForm from "./MessageForm";
 
 const StudentList = (props) => {
    const [students, setStudents] = useState([])
@@ -20,11 +21,12 @@ const StudentList = (props) => {
          })
    }, [])
    return (
-      <div>{students.map((student, index) => {
+      <div>
+      {students.map(student => {
          return (
-            <div key={index}>
-            <StudentCard key={student.student_name} {...student} />
-            <Reminders key={student.id} {...student}/>
+            <div>
+               <StudentCard {...student} />
+               <MessageForm {...student}/>
             </div>
          )
       })}

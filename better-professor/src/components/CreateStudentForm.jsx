@@ -36,7 +36,6 @@ const CreateStudentForm = () => {
                     value={add.major}
                     onChange={handleChange}
                 />
-
                 <button type="submit">Create Student</button>
             </form>
         </div>

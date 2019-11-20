@@ -1,0 +1,9 @@
+
+{
+    "version": 2,
+    "name": "better-professor-web23",
+    "builds": [{ "src": "better-professor-web23/package.json", "use": "@now/static-build", "config": {"distDir": "build"} }],
+    "routes": [
+      { "src": "/(.*)", "dest": "better-professor-web23/$1"}
+    ]
+  } 
