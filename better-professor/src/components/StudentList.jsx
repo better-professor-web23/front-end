@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'
 import axiosWithAuth from '../utils/axiosWithAuth';
-import { Link } from 'react-router-dom'
+
+
 import StudentCard from "./StudentCard"
 
 const StudentList = (props) => {
@@ -17,14 +17,11 @@ const StudentList = (props) => {
             console.log(re)
             setStudents(re.data)
          })
-   }, [props.match.params.id])
+   }, [])
    return (
       <div>{students.map(student => {
          return (
-            <div>
-               <StudentCard {...student} />
-            </div>
-
+            <StudentCard key={student.id} {...student} />
          )
       })}
       </div>
