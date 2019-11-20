@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 const Form = styled.form`
-
 `
 
 const Input = styled.input`
-
 `
 
 const InputWrapper = styled.div`
@@ -33,11 +30,13 @@ const SubmitButton = styled.button`
 const AddAssignment = (props) => {
 
    const id = props.match.params.id
+   console.log('testing', id);
    const [add, setAdd] = useState({
       project_name: '',
       deadline: '',
       student_id: id
    })
+   
 
    const handleChange = event => {
       setAdd({ ...add, [event.target.name]: event.target.value })
@@ -54,7 +53,7 @@ const AddAssignment = (props) => {
 
    return (
 
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} key={id}>
          <InputWrapper>
             <Label>Name of Assignment:
                 <Input

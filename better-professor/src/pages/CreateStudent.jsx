@@ -5,7 +5,9 @@ import CreateStudentForm from "../components/CreateStudentForm";
 export const CreateStudent = () => {
     return (
         <div>
-            <CreateStudentForm/>
+            <CreateStudentForm
+            
+            />
         </div>
     )
 }

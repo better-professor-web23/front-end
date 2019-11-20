@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'
 import axiosWithAuth from '../utils/axiosWithAuth';
+
+
 import StudentCard from "./StudentCard"
+import MessageForm from "./MessageForm";
 
 const StudentList = (props) => {
    const [students, setStudents] = useState([])
    console.log({ props })
-
 
    useEffect(() => {
       const id = localStorage.getItem('id')
@@ -16,15 +17,16 @@ const StudentList = (props) => {
             console.log(re)
             setStudents(re.data)
          })
-   }, [props.match.params.id])
+   }, [])
    return (
-      <div>{students.map(student => {
-         return (
-            <div>
-               <StudentCard {...student}/>
-            </div>
-         )
-      })}
+      <div>
+         {students.map(student => {
+            return (
+               <div>
+                  <StudentCard {...student} />
+               </div>
+            )
+         })}
       </div>
    )
 }
