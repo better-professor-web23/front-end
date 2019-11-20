@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'
 import axiosWithAuth from '../utils/axiosWithAuth';
 import StudentCard from "./StudentCard"
 import MessageForm from "./MessageForm";
@@ -17,7 +16,7 @@ const StudentList = (props) => {
             console.log(re)
             setStudents(re.data)
          })
-   }, [props.match.params.id])
+   }, [])
    return (
       <div>
       {students.map(student => {

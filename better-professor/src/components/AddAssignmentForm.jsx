@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 const Form = styled.form`
@@ -48,7 +47,7 @@ const AddAssignment = (props) => {
       axiosWithAuth()
          .post(`https://better-professor-back-end.herokuapp.com/projects/`, add)
          .then(response => {
-            console.log('response after adding student', response.data.id);
+            console.log('response after adding student', response.data);
          })
    }
 
