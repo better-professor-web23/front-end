@@ -12,7 +12,7 @@ const MessageForm = (props) => {
         student_id: id
     })
 
-
+//
    const handleChange = event => {
     setMessage({ ...message, [event.target.name]: event.target.value })
  }
