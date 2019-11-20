@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import axiosWithAuth from '../utils/axiosWithAuth';
+import StudentCard from "./StudentCard"
 
 const StudentList = (props) => {
    const [students, setStudents] = useState([])
@@ -20,7 +21,7 @@ const StudentList = (props) => {
       <div>{students.map(student => {
          return (
             <div>
-               {student.student_name}
+               <StudentCard {...student}/>
             </div>
          )
       })}
