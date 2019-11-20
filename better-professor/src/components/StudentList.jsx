@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
+import Reminders from "../pages/Reminders";
+
+
 import StudentCard from "./StudentCard"
 import MessageForm from "./MessageForm";
 
