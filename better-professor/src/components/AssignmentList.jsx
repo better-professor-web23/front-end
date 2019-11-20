@@ -36,6 +36,14 @@ const AssignmentList = (props) => {
 
    }, [props.match.params.id])
 
+   const deleteAssignment = () => {
+      axiosWithAuth()
+      .delete(`https://better-professor-back-end.herokuapp.com/projects/${assignmentlist.id}`)
+      .then(res => console.log("erased assignment", res))
+      .catch(err => console.log(err.response));
+   }
+
+
    return (
       <CardsWrapperDiv>Assignments List
          {assignmentlist.map(item => {
@@ -44,6 +52,9 @@ const AssignmentList = (props) => {
                <AssignmentNameH2>{item.project_name}</AssignmentNameH2>
                <AssignmentDeadlineH3>Deadline: {item.deadline}</AssignmentDeadlineH3>
                <AssignmentDeadlineH3>Deadline Type: {item.deadline_type}</AssignmentDeadlineH3>
+               <button>Edit</button>
+               <button onClick={deleteAssignment}>Delete</button>
+               <button>Send Reminder</button>
             </AssignmentCardDiv>
          )
       })}
