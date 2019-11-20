@@ -11,11 +11,13 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Reminders from "./pages/Reminders";
 import Signup from "./pages/Signup";
+import NavigationHeader from './components/Navigation'
 
 
 function App() {
   return (
     <div >
+      <NavigationHeader />
       <Switch>
         <Route path='/signup' component={Signup} />
         <Route path='/login' component={Login} />

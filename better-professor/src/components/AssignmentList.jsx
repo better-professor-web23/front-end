@@ -19,8 +19,8 @@ const AssignmentDeadlineH3 = styled.h3`
 `
 
 const AssignmentList = (props) => {
-   const [assignmentlist, setAssignmentList] = useState([]);
-   console.log({ assignmentlist })
+   const [assignmentList, setAssignmentList] = useState([]);
+   console.log({ assignmentList })
    console.log({ props })
    useEffect(() => {
       const id = props.match.params.id
@@ -28,7 +28,7 @@ const AssignmentList = (props) => {
          .get(`https://better-professor-back-end.herokuapp.com/projects/students/${id}`)
          .then(re => {
             console.log({ re })
-            setAssignmentList([...assignmentlist, ...re.data])
+            setAssignmentList([...assignmentList, ...re.data])
          })
          .catch(error => {
             console.log(error.message)
@@ -38,7 +38,7 @@ const AssignmentList = (props) => {
 
    return (
       <CardsWrapperDiv>Assignments List
-         {assignmentlist.map(item => {
+         {assignmentList.map(item => {
          return (
             <AssignmentCardDiv key={item.id}>
                <AssignmentNameH2>{item.project_name}</AssignmentNameH2>
