@@ -21,6 +21,7 @@ const StudentList = (props) => {
          return (
             <div>
                {student.student_name}
+               {student.major}
             </div>
          )
       })}
