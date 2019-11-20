@@ -1,6 +1,5 @@
 import React from "react";
 import StudentList from '../components/StudentList.jsx'
-
 const Dashboard = (props) => {
     return (
         <div>
