@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axiosWithAuth from '../utils/axiosWithAuth'
 
+import { connect } from 'react-redux';
+// import {fetchAssignments} from "../actions" 
+
 const CardsWrapperDiv = styled.div`
 
 `
@@ -36,12 +39,16 @@ const AssignmentList = (props) => {
 
    }, [props.match.params.id])
 
-   const deleteAssignment = () => {
-      axiosWithAuth()
-      .delete(`https://better-professor-back-end.herokuapp.com/projects/${assignmentlist.id}`)
-      .then(res => console.log("erased assignment", res))
-      .catch(err => console.log(err.response));
-   }
+
+
+   // const deleteAssignment = () => {
+   //    // const idErase = response.data.id
+   //    console.log('response data id',props.match.params);
+   //    axiosWithAuth()
+   //    .delete(`https://better-professor-back-end.herokuapp.com/projects/${idErase}`)
+   //    .then(res => console.log("erased assignment", res))
+   //    .catch(err => console.log(err.response));
+   // }
 
 
    return (
@@ -53,7 +60,7 @@ const AssignmentList = (props) => {
                <AssignmentDeadlineH3>Deadline: {item.deadline}</AssignmentDeadlineH3>
                <AssignmentDeadlineH3>Deadline Type: {item.deadline_type}</AssignmentDeadlineH3>
                <button>Edit</button>
-               <button onClick={deleteAssignment}>Delete</button>
+               <button >Delete</button>
                <button>Send Reminder</button>
             </AssignmentCardDiv>
          )
@@ -62,4 +69,19 @@ const AssignmentList = (props) => {
    )
 }
 
-export default AssignmentList
+export default AssignmentList;
+
+// const mapStateToProps = state => {
+//    return {
+//       assignments: state.assignments,
+//       isFetching: state.isFetching
+//    }
+// }
+
+
+// export default connect(
+//    mapStateToProps,
+//    {fetchAssignments}
+
+// )(AssignmentList)
+

@@ -31,11 +31,13 @@ const SubmitButton = styled.button`
 const AddAssignment = (props) => {
 
    const id = props.match.params.id
+   console.log('testes', id);
    const [add, setAdd] = useState({
       project_name: '',
       deadline: '',
       student_id: id
    })
+   
 
    const handleChange = event => {
       setAdd({ ...add, [event.target.name]: event.target.value })
@@ -46,13 +48,13 @@ const AddAssignment = (props) => {
       axiosWithAuth()
          .post(`https://better-professor-back-end.herokuapp.com/projects/`, add)
          .then(response => {
-            console.log('response after adding student', response.data);
+            console.log('response after adding student', response.data.id);
          })
    }
 
    return (
 
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} key={id}>
          <InputWrapper>
             <Label>Name of Assignment:
                 <Input
