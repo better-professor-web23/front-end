@@ -8,7 +8,7 @@ margin: 2% auto;
 color: white;
 background-color: blue;
 font-size: 1rem;
-margin: .7rem auto;
+margin: .7rem;
 `;
 
 const Login = styled.div`
@@ -16,9 +16,9 @@ const Login = styled.div`
    border: 0.8rem solid #5DADE2;
    background-color: #E9F7EF;
    width: 15rem;
-   height: 15rem;
    padding: 1rem 0;
    margin:0 20rem;
+   margin-top: 2rem;
    text-decoration: none;
 `;
 

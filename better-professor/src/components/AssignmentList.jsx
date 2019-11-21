@@ -95,8 +95,8 @@ const deleteAssignment = event => {
                <AssignmentCardDiv key={item.id}>
                   <AssignmentNameH2>{item.project_name}</AssignmentNameH2>
                   <AssignmentDeadlineH3>Deadline: {item.deadline}</AssignmentDeadlineH3>
-                  <Button>Edit </Button>
-                  <Button>Delete </Button>
+                  <Button value={item.id} onClick={editAssignment}>Edit </Button>
+                  <Button value={item.id} onClick={deleteAssignment}>Delete</Button>
                   <Button onClick={sendMessage}>Send Message</Button>
                </AssignmentCardDiv>
             )
