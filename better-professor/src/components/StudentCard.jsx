@@ -43,7 +43,7 @@ const StudentCard = props => {
 
     const EditStudent = () => {
         console.log('by god', props)
-        props.history.push(`/Editstudent/${id}`)
+        props.history.push(`/editstudent/${id}`)
     }
 
 
