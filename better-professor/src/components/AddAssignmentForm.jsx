@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components'
 import axiosWithAuth from "../utils/axiosWithAuth";
+import * as yup from 'yup'
 
 const Form = styled.form`
 `
@@ -40,12 +41,17 @@ const SubmitButton = styled.button`
 `
 
 const AddAssignment = (props) => {
-
    const id = props.match.params.id
    const [add, setAdd] = useState({
       project_name: '',
       deadline: '',
       student_id: id
+   })
+
+   const validationSchema = yup.object().shape({
+      project_name: yup.string().required('something'),
+      deadline: yup.date().required('something'),
+      student_id: yup.string().required('something')
    })
 
 
@@ -55,12 +61,22 @@ const AddAssignment = (props) => {
 
    const handleSubmit = event => {
       event.preventDefault();
-      axiosWithAuth()
-         .post(`https://better-professor-back-end.herokuapp.com/projects/`, add)
-         .then(response => {
-            console.log('response after adding assignment', response.data);
-            props.history.push(`/assignments/${id}`)
+      validationSchema.isValid(add)
+         .then(valid => {
+            if (valid) {
+               axiosWithAuth()
+                  .post(`https://better-professor-back-end.herokuapp.com/projects/`, add)
+                  .then(response => {
+                     console.log('response after adding assignment', response.data);
+                     props.history.push(`/assignments/${id}`)
+                  })
+            } else {
+               alert('Please fill out all fields')
+            }
+
          })
+
+
    }
 
    return (
@@ -69,7 +85,6 @@ const AddAssignment = (props) => {
          <InputWrapper>
             <Label htmlFor='project_name'>Name of Assignment:</Label>
             <Input
-               required
                type='text'
                name='project_name'
                placeholder='Project/Paper Name'
@@ -77,7 +92,6 @@ const AddAssignment = (props) => {
             />
             <Label htmlFor='deadline'>Deadline: </Label>
             <Input
-               required
                type='date'
                name='deadline'
                onChange={handleChange}
