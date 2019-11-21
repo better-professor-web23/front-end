@@ -42,7 +42,7 @@ const CreateStudentForm = (props) => {
     }
     return (
         <Create>
-            <CreateDets>
+            <CreateDets onSubmit={submitForm}>
                 <input
                     type="text"
                     name="student_name"
