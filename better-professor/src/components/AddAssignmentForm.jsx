@@ -47,6 +47,7 @@ const AddAssignment = (props) => {
       deadline: '',
       student_id: id
    })
+   console.log({ add })
 
    const validationSchema = yup.object().shape({
       project_name: yup.string().required('something'),
@@ -95,6 +96,7 @@ const AddAssignment = (props) => {
                type='date'
                name='deadline'
                onChange={handleChange}
+               defaultValue="2019-11-21"
             />
             <SubmitButton type='submit'>Add Assignment</SubmitButton>
          </InputWrapper>
