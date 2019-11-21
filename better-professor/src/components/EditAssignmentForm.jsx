@@ -9,40 +9,40 @@ const EditAssignmentForm = (props) => {
         project_name: '',
         deadline: '',
         id: id
-     })
+    })
 
-     const handleChange = event => {
+    const handleChange = event => {
         setEdit({ ...edit, [event.target.name]: event.target.value })
-     }
+    }
 
-     const handleSubmit = event => {
+    const handleSubmit = event => {
         event.preventDefault();
         axiosWithAuth()
-           .put(`https://better-professor-back-end.herokuapp.com/projects/${id}`, edit)
-           .then(response => {
-              console.log('response after adding student', response.data);
-           })
-           console.log('edit', edit);
-     }
-  
+            .put(`https://better-professor-back-end.herokuapp.com/projects/${id}`, edit)
+            .then(response => {
+                console.log('response after adding student', response.data);
+            })
+        console.log('edit', edit);
+    }
+
     return (
         <div>
             <h1>Edit Form</h1>
             <form onSubmit={handleSubmit}>
-            <input
-            type="text"
-            name="project_name"
-            placeholder="assignment name"
-            onChange={handleChange}
-            value={edit.project_name}
-            />
-            <input
-            type='date'
-            name='deadline'
-            onChange={handleChange}
-            value={edit.deadline}
-            />
-            <button type="submit">Update Student</button>
+                <input
+                    type="text"
+                    name="project_name"
+                    placeholder="assignment name"
+                    onChange={handleChange}
+                    value={edit.project_name}
+                />
+                <input
+                    type='date'
+                    name='deadline'
+                    onChange={handleChange}
+                    value={edit.deadline}
+                />
+                <button type="submit">Update Student</button>
             </form>
         </div>
     )
