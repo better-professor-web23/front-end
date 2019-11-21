@@ -7,20 +7,45 @@ import { connect } from 'react-redux';
 // import {fetchAssignments} from "../actions" 
 
 const CardsWrapperDiv = styled.div`
-
+   max-width: 1200px;
+   width: 100%;
+   margin: 0 auto;
+   display:flex;
+   flex-wrap:wrap;
+   justify-content: space-evenly;
+   
 `
 
-const AssignmentCardDiv = styled.div`
+const Title = styled.h1`
+   width: 100%;
+   text-align:center;
+`;
 
+const AssignmentCardDiv = styled.div`
+   width: 45%;
+   border: 2px solid blue;
+   border-radius: 1rem;
+   margin: 2% 0;
+   display:flex;
+   flex-wrap:wrap;
+   padding: 2%;
 `
 
 const AssignmentNameH2 = styled.h2`
-
+   width: 100%;
 `
 
 const AssignmentDeadlineH3 = styled.h3`
-
+   width: 100%;
 `
+const Button = styled.button`
+   width: 30%;
+   margin: 2% auto;
+   color: white;
+   background-color: blue;
+   font-size: 1.2rem;
+   border-radius: 1rem;
+`;
 
 const AssignmentList = (props) => {
    const [assignmentList, setAssignmentList] = useState([]);
@@ -46,16 +71,16 @@ const AssignmentList = (props) => {
 
    }
 
-//    const Assignment = (props) => {
-//       const id = props.match.params.id
-//       return (
-//           <div>
-//               <Link to={`/addassignment/${id}`}>Add Assignment</Link>
-//               <AssignmentList {...props} />
-//           </div>
-//       )
-//   }
-  
+   //    const Assignment = (props) => {
+   //       const id = props.match.params.id
+   //       return (
+   //           <div>
+   //               <Link to={`/addassignment/${id}`}>Add Assignment</Link>
+   //               <AssignmentList {...props} />
+   //           </div>
+   //       )
+   //   }
+
 
 
    // const deleteAssignment = () => {
@@ -69,18 +94,19 @@ const AssignmentList = (props) => {
 
 
    return (
-      <CardsWrapperDiv>Assignments List
+      <CardsWrapperDiv>
+         <Title>Assignments</Title>
          {assignmentList.map(item => {
-         return (
-            <AssignmentCardDiv key={item.id}>
-               <AssignmentNameH2>{item.project_name}</AssignmentNameH2>
-               <AssignmentDeadlineH3>Deadline: {item.deadline}</AssignmentDeadlineH3>
-               <button>Edit</button>
-               <button >Delete</button>
-               <button onClick={sendMessage}>Send Message</button>
-            </AssignmentCardDiv>
-         )
-      })}
+            return (
+               <AssignmentCardDiv key={item.id}>
+                  <AssignmentNameH2>{item.project_name}</AssignmentNameH2>
+                  <AssignmentDeadlineH3>Deadline: {item.deadline}</AssignmentDeadlineH3>
+                  <Button>Edit </Button>
+                  <Button >Delete </Button>
+                  <Button onClick={sendMessage}>Send Message</Button>
+               </AssignmentCardDiv>
+            )
+         })}
       </CardsWrapperDiv>
    )
 }
