@@ -1,11 +1,33 @@
 import React, { useState, useEffect } from "react";
-import axiosWithAuth from "../utils/axiosWithAuth"
+import axiosWithAuth from "../utils/axiosWithAuth";
+import styled from 'styled-components';
+
+const CardWrapper = styled.div`
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+`;
+const Title = styled.h1`
+    width:100%;
+    text-align:center;
+`;
+const MessagesCard = styled.div`
+    width: 30%;
+    border: 2px solid blue;
+    border-radius: 1rem;
+    padding: 2%;
+    margin: 2% 0;
+`;
+const P = styled.p`
+    font-size: 1.3rem;
+`;
+
 
 
 const ReminderList = (props) => {
 
     const [reminders, setReminders] = useState([])
-    console.log('reminderlist', props)
+    console.log(reminders)
     const id = props.match.params.id
     useEffect(() => {
 
@@ -19,15 +41,19 @@ const ReminderList = (props) => {
     }, [id])
 
     return (
-        <div>
+        <CardWrapper>
+            <Title>Reminders</Title>
             {reminders.map(reminder => {
                 return (
-                    <p>{reminder.message}</p>
+                    <MessagesCard>
+                        <P>{reminder.message}</P>
+                        <P>{reminder.date}</P>
+                    </MessagesCard>
                 );
 
             })}
 
-        </div>
+        </CardWrapper>
     )
 };
 

@@ -5,20 +5,45 @@ import axiosWithAuth from '../utils/axiosWithAuth'
 // import {fetchAssignments} from "../actions" 
 
 const CardsWrapperDiv = styled.div`
-
+   max-width: 1200px;
+   width: 100%;
+   margin: 0 auto;
+   display:flex;
+   flex-wrap:wrap;
+   justify-content: space-evenly;
+   
 `
 
-const AssignmentCardDiv = styled.div`
+const Title = styled.h1`
+   width: 100%;
+   text-align:center;
+`;
 
+const AssignmentCardDiv = styled.div`
+   width: 45%;
+   border: 2px solid blue;
+   border-radius: 1rem;
+   margin: 2% 0;
+   display:flex;
+   flex-wrap:wrap;
+   padding: 2%;
 `
 
 const AssignmentNameH2 = styled.h2`
-
+   width: 100%;
 `
 
 const AssignmentDeadlineH3 = styled.h3`
-
+   width: 100%;
 `
+const Button = styled.button`
+   width: 30%;
+   margin: 2% auto;
+   color: white;
+   background-color: blue;
+   font-size: 1.2rem;
+   border-radius: 1rem;
+`;
 
 const AssignmentList = (props) => {
    const [assignmentList, setAssignmentList] = useState([]);
@@ -50,6 +75,7 @@ const AssignmentList = (props) => {
       props.history.push(`/editassignment/${id}`)
    }
 
+
 const deleteAssignment = event => {
    const id = event.target.value
    console.log('props.match.params', props.match.params);
@@ -63,18 +89,20 @@ const deleteAssignment = event => {
 
 
    return (
-      <CardsWrapperDiv>Assignments List
+      <CardsWrapperDiv>
+         <Title>Assignments</Title>
          {assignmentList.map(item => {
-         return (
-            <AssignmentCardDiv key={item.id}>
-               <AssignmentNameH2>{item.project_name}</AssignmentNameH2>
-               <AssignmentDeadlineH3>Deadline: {item.deadline}</AssignmentDeadlineH3>
-               <button value={item.id} onClick={editAssignment}>Edit</button>
-               <button value={item.id} onClick={deleteAssignment}>Erase</button>
-               <button onClick={sendMessage}>Send Message</button>
-            </AssignmentCardDiv>
-         )
-      })}
+
+            return (
+               <AssignmentCardDiv key={item.id}>
+                  <AssignmentNameH2>{item.project_name}</AssignmentNameH2>
+                  <AssignmentDeadlineH3>Deadline: {item.deadline}</AssignmentDeadlineH3>
+                  <Button value={item.id} onClick={editAssignment}>Edit </Button>
+                  <Button value={item.id} onClick={deleteAssignment}>Delete</Button>
+                  <Button onClick={sendMessage}>Send Message</Button>
+               </AssignmentCardDiv>
+            )
+         })}
       </CardsWrapperDiv>
    )
 }
