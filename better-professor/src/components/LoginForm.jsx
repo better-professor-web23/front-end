@@ -1,5 +1,17 @@
 import React, { useState } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
+import styled from "styled-components";
+
+
+const Login = styled.div`
+   display: block;
+   border: 0.8rem solid #5DADE2;
+   background-color: #E9F7EF;
+   width: 15rem;
+   padding: 1rem 0;
+   margin:0 20rem;
+   text-decoration: none;
+`;
 
 const LoginForm = (props) => {
 
@@ -30,7 +42,7 @@ const LoginForm = (props) => {
 
   return (
     <>
-      <div>
+      <Login>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -48,7 +60,7 @@ const LoginForm = (props) => {
           />
           <button type="submit">Login</button>
         </form>
-      </div>
+      </Login>
     </>
   );
 };

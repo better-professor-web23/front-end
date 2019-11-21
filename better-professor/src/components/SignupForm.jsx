@@ -6,18 +6,18 @@ import styled from "styled-components";
 
 
 
+
+
+
 const Signform = styled.div`
 
-display: flex;
-flex-wrap: wrap;
-flex-direction: column;
-align-items: center;
-padding: 30px;
-
-margin: 200px auto;
-background-color: papayawhip;
-max-width: 400px;
-max-height: 500px;
+display: block;
+border: 0.6rem solid #5DADE2;
+background-color: #E9F7EF;
+width: 15rem;
+padding: 1rem 0;
+margin:0 20rem;
+text-decoration: none;
 
 `;
 
