@@ -7,9 +7,9 @@ import styled from "styled-components";
 const Stu = styled.div`
    display: flex;
    flex-wrap: wrap;
-   justify-content: space-around;
+   justify-content: space-between;
    margin: 3rem;
-   max-width: 70rem;
+   max-width: 73rem;
 `;
 
 const EachStu = styled.div`
@@ -18,10 +18,10 @@ const EachStu = styled.div`
    align-items: center;
    border: 0.8rem solid #5DADE2;
    background-color: #E9F7EF;
-   width: 15rem;
+   width: 13rem;
    padding: 1rem 0;
    margin: 1rem 0;
-   text-decoration: none;
+   
 `;
 
 

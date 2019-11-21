@@ -9,16 +9,35 @@ import styled from "styled-components";
 
 
 
-const Signform = styled.div`
+const SignUpform = styled.div`
 
-display: block;
-border: 0.6rem solid #5DADE2;
+display: flex;
+border: 0.8rem solid #5DADE2;
 background-color: #E9F7EF;
-width: 15rem;
+width: 18rem;
+height: 25rem;
 padding: 1rem 0;
 margin:0 20rem;
 text-decoration: none;
 
+`;
+
+
+const SignUpButton = styled.button`
+width: 6rem;
+margin: 2% auto;
+color: white;
+background-color: blue;
+font-size: 1rem;
+margin: .7rem auto;
+`;
+
+const FormDets = styled.form`
+  display:flex;
+  justify-content: center; 
+  flex-direction: column;
+  align-items: center;
+  margin:0 4rem;
 `;
 
 
@@ -34,27 +53,31 @@ const SignupForm = ({ values, errors, touched, status }) => {
 
     return (
 
-        <Signform className="user-form">
-            <Form>
+        <SignUpform className="user-form">
+            <FormDets>
+                <p>Username</p>
                 <Field type="text" name="username" placeholder="username" />
                 {touched.username && errors.username && (
                     <p className="errors"> {errors.username}</p>
                 )}
+                <p>Password</p>
                 <Field type="text" name="password" placeholder="password" />
                 {touched.password && errors.password && (
                     <p className="errors"> {errors.password}</p>
                 )}
+                <p>First Name</p>
                 <Field type="text" name="first_name" placeholder="first name" />
                 {touched.first_name && errors.first_name && (
                     <p className="errors"> {errors.first_name}</p>
                 )}
+                <p>Last Name</p>
                 <Field type="text" name="last_name" placeholder="last name" />
                 {touched.last_name && errors.last_name && (
                     <p className="errors"> {errors.last_name}</p>
                 )}
 
-                <button>Sign Up</button>
-            </Form>
+                <SignUpButton>Sign Up</SignUpButton>
+            </FormDets>
             {user.map(user => (
                 <ul key={user.id}>
                     <li>Username: {user.username}</li>
@@ -63,7 +86,7 @@ const SignupForm = ({ values, errors, touched, status }) => {
                     <li>Last Name: {user.last_name}</li>
                 </ul>
             ))}
-        </Signform>
+        </SignUpform>
     );
 };
 
