@@ -10,10 +10,10 @@ margin-top: -1.3rem ;
 `;
 
 
-export const CreateStudent = () => {
+export const CreateStudent = (props) => {
     return (
         <CreateSection>
-            <CreateStudentForm/>
+            <CreateStudentForm {...props} />
         </CreateSection>
     )
 }

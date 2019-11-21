@@ -32,7 +32,7 @@ font-size: 1rem;
 margin: .7rem auto;
 `;
 
-const FormDets = styled.form`
+const FormDets = styled(Form)`
   display:flex;
   justify-content: center; 
   flex-direction: column;
@@ -61,7 +61,7 @@ const SignupForm = ({ values, errors, touched, status }) => {
                     <p className="errors"> {errors.username}</p>
                 )}
                 <p>Password</p>
-                <Field type="text" name="password" placeholder="password" />
+                <Field type="password" name="password" placeholder="password" />
                 {touched.password && errors.password && (
                     <p className="errors"> {errors.password}</p>
                 )}
@@ -76,7 +76,7 @@ const SignupForm = ({ values, errors, touched, status }) => {
                     <p className="errors"> {errors.last_name}</p>
                 )}
 
-                <SignUpButton>Sign Up</SignUpButton>
+                <SignUpButton type='submit'>Sign Up</SignUpButton>
             </FormDets>
             {user.map(user => (
                 <ul key={user.id}>
@@ -110,7 +110,7 @@ const FormikUserForm = withFormik({
         axios
             .post("https://better-professor-back-end.herokuapp.com/users/register", values)
             .then(response => {
-                console.log(response);
+                console.log('signup response', response);
                 setStatus(response.data);
                 props.history.push("/login")
 
