@@ -7,7 +7,7 @@ import MessageForm from "./MessageForm";
 
 const StudentList = (props) => {
    const [students, setStudents] = useState([])
-   console.log({ props })
+   console.log('lets see if this shows', props)
 
    useEffect(() => {
       const id = localStorage.getItem('id')
@@ -23,7 +23,7 @@ const StudentList = (props) => {
          {students.map(student => {
             return (
                <div>
-                  <StudentCard {...student} />
+                  <StudentCard {...student} {...props}/>
                </div>
             )
          })}
