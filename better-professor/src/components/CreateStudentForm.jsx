@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
-const CreateStudentForm = () => {
+const CreateStudentForm = (props) => {
     const userId = localStorage.getItem('id')
     const [add, setAdd] = useState({
         student_name: '',
@@ -17,6 +17,7 @@ const CreateStudentForm = () => {
             .post(`https://better-professor-back-end.herokuapp.com/students/`, add)
             .then(response => {
                 console.log('response after adding student', response.data);
+
             })
     }
     return (

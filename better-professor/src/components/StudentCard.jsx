@@ -3,12 +3,14 @@ import {Link} from "react-router-dom";
 
 import axiosWithAuth from "../utils/axiosWithAuth";
 
+
 const StudentCard = props => {
+
+    console.log('testing out props')
 
     // const [erase, setErase] = useState({});
 
     const id = props.id;
-    
 
     const deleteStudent = () => {
     axiosWithAuth()
@@ -28,16 +30,21 @@ const StudentCard = props => {
     //        })
     //  }, [])
 
+    const EditStudent = () => {
+        console.log('by god', props)
+        props.history.push(`/editstudent/${id}`)
+    }
+
+
     return (
         <div className="student-card">
-            <h2>Student</h2>
-            <div>
-                <Link to={`/assignments/${props.id}`}>Name: {props.student_name}</Link>
-                <p>Major: {props.major}</p>
-            </div>
-            <button>Edit</button>
+            <h3>{props.student_name}</h3>
+            <p>Major: {props.major}</p>
+                <Link to={`/assignments/${props.id}`}>
+                    <button>See Assignments</button>
+                </Link>
+            <button onClick={EditStudent}>Edit</button>
             <button onClick={deleteStudent}>Delete</button>
-
         </div>    
 
 
