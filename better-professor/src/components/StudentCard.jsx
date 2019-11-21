@@ -54,7 +54,7 @@ const StudentCard = props => {
                 <Link to={`/assignments/${props.id}`}>Name: {props.student_name}</Link>
                 <p>Major: {props.major}</p>
             </div>
-            <Button>Edit</Button>
+            <Button onClick={EditStudent}>Edit</Button>
             <Button onClick={deleteStudent}>Delete</Button>
 
         </div>    
