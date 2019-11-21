@@ -50,9 +50,9 @@ const AddAssignment = (props) => {
    console.log({ add })
 
    const validationSchema = yup.object().shape({
-      project_name: yup.string().required('something'),
-      deadline: yup.date().required('something'),
-      student_id: yup.string().required('something')
+      project_name: yup.string().required('Please provide a project name.'),
+      deadline: yup.date().required('A valid date is required.'),
+      student_id: yup.string().required('No student id.')
    })
 
 
@@ -72,7 +72,11 @@ const AddAssignment = (props) => {
                      props.history.push(`/assignments/${id}`)
                   })
             } else {
-               alert('Please fill out all fields')
+               validationSchema.validate(add)
+                  .catch(er => {
+                     console.log(er)
+                     alert(er.message)
+                  })
             }
 
          })
@@ -96,7 +100,7 @@ const AddAssignment = (props) => {
                type='date'
                name='deadline'
                onChange={handleChange}
-               defaultValue="2019-11-21"
+               defaultValue="2000-01-01"
             />
             <SubmitButton type='submit'>Add Assignment</SubmitButton>
          </InputWrapper>
