@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom";
-
+import styled from "styled-components";
 import axiosWithAuth from "../utils/axiosWithAuth";
+
+const Button = styled.button`
+    width: 3rem;
+    margin: 2% auto;
+    color: white;
+    background-color: blue;
+    font-size: 0.7rem;
+    text-decoration: none;
+`;
+
+
 
 
 const StudentCard = props => {
@@ -38,13 +49,14 @@ const StudentCard = props => {
 
     return (
         <div className="student-card">
-            <h3>{props.student_name}</h3>
-            <p>Major: {props.major}</p>
-                <Link to={`/assignments/${props.id}`}>
-                    <button>See Assignments</button>
-                </Link>
-            <button onClick={EditStudent}>Edit</button>
-            <button onClick={deleteStudent}>Delete</button>
+            <h2>Student</h2>
+            <div>
+                <Link to={`/assignments/${props.id}`}>Name: {props.student_name}</Link>
+                <p>Major: {props.major}</p>
+            </div>
+            <Button>Edit</Button>
+            <Button onClick={deleteStudent}>Delete</Button>
+
         </div>    
 
 

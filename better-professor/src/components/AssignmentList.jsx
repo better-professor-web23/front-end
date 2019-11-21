@@ -75,7 +75,6 @@ const AssignmentList = (props) => {
       props.history.push(`/editassignment/${id}`)
    }
 
-
 const deleteAssignment = event => {
    const id = event.target.value
    console.log('props.match.params', props.match.params);
@@ -92,7 +91,6 @@ const deleteAssignment = event => {
       <CardsWrapperDiv>
          <Title>Assignments</Title>
          {assignmentList.map(item => {
-
             return (
                <AssignmentCardDiv key={item.id}>
                   <AssignmentNameH2>{item.project_name}</AssignmentNameH2>
