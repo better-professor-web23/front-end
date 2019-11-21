@@ -28,7 +28,7 @@ function App() {
         <PrivateRoute exact path='/assignments/:id' component={Assignments} />
         <PrivateRoute path='/createstudent' component={CreateStudent} />
         <PrivateRoute path='/message/:id' component={Message} />
-        <PrivateRoute path='/editassignment/:id' component={EditAssignment} />
+        <PrivateRoute path='/assignments/:student_id/editassignment/:id' component={EditAssignment} />
         <PrivateRoute path='/editstudent/:id' component={EditStudent} />
       </Switch>
     </div>

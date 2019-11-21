@@ -72,18 +72,19 @@ const AssignmentList = (props) => {
 
    const editAssignment = event => {
       const id = event.target.value
-      props.history.push(`/editassignment/${id}`)
+      const student_id = props.match.params.id
+      props.history.push(`/assignments/${student_id}/editassignment/${id}`)
    }
 
-const deleteAssignment = event => {
-   const id = event.target.value
-   console.log('props.match.params', props.match.params);
-   axiosWithAuth()
-   .delete(`https://better-professor-back-end.herokuapp.com/projects/${id}`)
-   .then(res => {
-       console.log('deleted assignment ', res);
-   })
-   .catch(err => console.log(err.response));
+   const deleteAssignment = event => {
+      const id = event.target.value
+      console.log('props.match.params', props.match.params);
+      axiosWithAuth()
+         .delete(`https://better-professor-back-end.herokuapp.com/projects/${id}`)
+         .then(res => {
+            console.log('deleted assignment ', res);
+         })
+         .catch(err => console.log(err.response));
    }
 
 
