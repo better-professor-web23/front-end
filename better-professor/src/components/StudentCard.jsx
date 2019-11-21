@@ -14,12 +14,14 @@ const Button = styled.button`
 
 
 
+
 const StudentCard = props => {
+
+    console.log('testing out props')
 
     // const [erase, setErase] = useState({});
 
     const id = props.id;
-    
 
     const deleteStudent = () => {
     axiosWithAuth()
@@ -38,6 +40,12 @@ const StudentCard = props => {
     //           setErase(re.data)
     //        })
     //  }, [])
+
+    const EditStudent = () => {
+        console.log('by god', props)
+        props.history.push(`/editstudent/${id}`)
+    }
+
 
     return (
         <div className="student-card">

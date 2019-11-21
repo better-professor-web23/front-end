@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axiosWithAuth from '../utils/axiosWithAuth'
-import { Link } from 'react-router-dom'
 
-import { connect } from 'react-redux';
 // import {fetchAssignments} from "../actions" 
 
 const CardsWrapperDiv = styled.div`
@@ -49,8 +47,9 @@ const Button = styled.button`
 
 const AssignmentList = (props) => {
    const [assignmentList, setAssignmentList] = useState([]);
+
    console.log({ assignmentList })
-   console.log({ props })
+   console.log('where is this coming from??', props)
    useEffect(() => {
       const id = props.match.params.id
       axiosWithAuth()
@@ -71,26 +70,21 @@ const AssignmentList = (props) => {
 
    }
 
-   //    const Assignment = (props) => {
-   //       const id = props.match.params.id
-   //       return (
-   //           <div>
-   //               <Link to={`/addassignment/${id}`}>Add Assignment</Link>
-   //               <AssignmentList {...props} />
-   //           </div>
-   //       )
-   //   }
+   const editAssignment = event => {
+      const id = event.target.value
+      props.history.push(`/editassignment/${id}`)
+   }
 
-
-
-   // const deleteAssignment = () => {
-   //    // const idErase = response.data.id
-   //    console.log('response data id',props.match.params);
-   //    axiosWithAuth()
-   //    .delete(`https://better-professor-back-end.herokuapp.com/projects/${idErase}`)
-   //    .then(res => console.log("erased assignment", res))
-   //    .catch(err => console.log(err.response));
-   // }
+const deleteAssignment = event => {
+   const id = event.target.value
+   console.log('props.match.params', props.match.params);
+   axiosWithAuth()
+   .delete(`https://better-professor-back-end.herokuapp.com/projects/${id}`)
+   .then(res => {
+       console.log('deleted assignment ', res);
+   })
+   .catch(err => console.log(err.response));
+   }
 
 
    return (
@@ -102,7 +96,7 @@ const AssignmentList = (props) => {
                   <AssignmentNameH2>{item.project_name}</AssignmentNameH2>
                   <AssignmentDeadlineH3>Deadline: {item.deadline}</AssignmentDeadlineH3>
                   <Button>Edit </Button>
-                  <Button >Delete </Button>
+                  <Button>Delete </Button>
                   <Button onClick={sendMessage}>Send Message</Button>
                </AssignmentCardDiv>
             )
@@ -126,4 +120,3 @@ export default AssignmentList;
 //    {fetchAssignments}
 
 // )(AssignmentList)
-

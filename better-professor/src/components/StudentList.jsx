@@ -29,7 +29,7 @@ const EachStu = styled.div`
 
 const StudentList = (props) => {
    const [students, setStudents] = useState([])
-   console.log({ props })
+   console.log('lets see if this shows', props)
 
    useEffect(() => {
       const id = localStorage.getItem('id')
@@ -44,9 +44,11 @@ const StudentList = (props) => {
       <Stu>
          {students.map(student => {
             return (
+
                <EachStu>
                   <StudentCard {...student} />
                </EachStu>
+
             )
          })}
       </Stu>
