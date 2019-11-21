@@ -46,7 +46,7 @@ const StudentList = (props) => {
             return (
 
                <EachStu>
-                  <StudentCard {...student} />
+                  <StudentCard {...student} {...props}/>
                </EachStu>
 
             )
