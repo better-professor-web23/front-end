@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import Reminders from "../pages/Reminders";
 
 
 import StudentCard from "./StudentCard"
@@ -9,7 +8,6 @@ import MessageForm from "./MessageForm";
 const StudentList = (props) => {
    const [students, setStudents] = useState([])
    console.log({ props })
-
 
    useEffect(() => {
       const id = localStorage.getItem('id')
@@ -22,14 +20,13 @@ const StudentList = (props) => {
    }, [])
    return (
       <div>
-      {students.map(student => {
-         return (
-            <div>
-               <StudentCard {...student} />
-               <MessageForm {...student}/>
-            </div>
-         )
-      })}
+         {students.map(student => {
+            return (
+               <div>
+                  <StudentCard {...student} />
+               </div>
+            )
+         })}
       </div>
    )
 }
