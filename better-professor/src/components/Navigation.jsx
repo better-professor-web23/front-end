@@ -8,6 +8,7 @@ const Header = styled.header`
    align-items: center;
    background-color: blue;
    color: white;
+   
 `;
 
 const TitleWrapper = styled.div`

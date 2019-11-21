@@ -1,5 +1,34 @@
 import React, { useState } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
+import styled from "styled-components";
+
+const LoginButton = styled.button`
+width: 4rem;
+margin: 2% auto;
+color: white;
+background-color: blue;
+font-size: 1rem;
+margin: .7rem;
+`;
+
+const Login = styled.div`
+   display: flex;
+   border: 0.8rem solid #5DADE2;
+   background-color: #E9F7EF;
+   width: 15rem;
+   padding: 1rem 0;
+   margin:0 20rem;
+   margin-top: 2rem;
+   text-decoration: none;
+`;
+
+const FormDetails = styled.form`
+  display:flex;
+  justify-content: center; 
+  flex-direction: column;
+  align-items: center;
+  margin:0 2.7rem;
+`;
 
 const LoginForm = (props) => {
 
@@ -30,8 +59,9 @@ const LoginForm = (props) => {
 
   return (
     <>
-      <div>
-        <form onSubmit={handleSubmit}>
+      <Login>
+        <FormDetails onSubmit={handleSubmit}>
+        <p>Username</p>
           <input
             type="text"
             name="username"
@@ -39,6 +69,7 @@ const LoginForm = (props) => {
             value={login.username}
             onChange={handleChange}
           />
+          <p>Password</p>
           <input
             type="password"
             name="password"
@@ -46,9 +77,9 @@ const LoginForm = (props) => {
             value={login.password}
             onChange={handleChange}
           />
-          <button type="submit">Login</button>
-        </form>
-      </div>
+          <LoginButton type="submit">Login</LoginButton>
+        </FormDetails>
+      </Login>
     </>
   );
 };
