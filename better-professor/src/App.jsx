@@ -13,8 +13,8 @@ import Login from "./pages/Login";
 import Message from "./pages/Message";
 import Signup from "./pages/Signup";
 import NavigationHeader from './components/Navigation'
-import Reminders from './pages/Reminders'
-
+import EditAssignment from "./pages/EditAssignment";
+import EditStudent from "./pages/EditStudent";
 
 function App() {
   return (
@@ -28,6 +28,8 @@ function App() {
         <PrivateRoute exact path='/assignments/:id' component={Assignments} />
         <PrivateRoute path='/createstudent' component={CreateStudent} />
         <PrivateRoute path='/message/:id' component={Message} />
+        <PrivateRoute path='/editassignment/:id' component={EditAssignment} />
+        <PrivateRoute path='/editstudent/:id' component={EditStudent} />
       </Switch>
     </div>
   );

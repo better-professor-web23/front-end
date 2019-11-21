@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axiosWithAuth from '../utils/axiosWithAuth'
-import { Link } from 'react-router-dom'
 
-import { connect } from 'react-redux';
 // import {fetchAssignments} from "../actions" 
 
 const CardsWrapperDiv = styled.div`
@@ -24,8 +22,9 @@ const AssignmentDeadlineH3 = styled.h3`
 
 const AssignmentList = (props) => {
    const [assignmentList, setAssignmentList] = useState([]);
+
    console.log({ assignmentList })
-   console.log('student card props', props)
+   console.log('where is this coming from??', props)
    useEffect(() => {
       const id = props.match.params.id
       axiosWithAuth()
@@ -46,6 +45,11 @@ const AssignmentList = (props) => {
 
    }
 
+   const editAssignment = event => {
+      const id = event.target.value
+      props.history.push(`/editassignment/${id}`)
+   }
+
 const deleteAssignment = event => {
    const id = event.target.value
    console.log('props.match.params', props.match.params);
@@ -58,7 +62,6 @@ const deleteAssignment = event => {
    }
 
 
-
    return (
       <CardsWrapperDiv>Assignments List
          {assignmentList.map(item => {
@@ -66,7 +69,7 @@ const deleteAssignment = event => {
             <AssignmentCardDiv key={item.id}>
                <AssignmentNameH2>{item.project_name}</AssignmentNameH2>
                <AssignmentDeadlineH3>Deadline: {item.deadline}</AssignmentDeadlineH3>
-               <button>Edit</button>
+               <button value={item.id} onClick={editAssignment}>Edit</button>
                <button value={item.id} onClick={deleteAssignment}>Erase</button>
                <button onClick={sendMessage}>Send Message</button>
             </AssignmentCardDiv>
@@ -91,4 +94,3 @@ export default AssignmentList;
 //    {fetchAssignments}
 
 // )(AssignmentList)
-
