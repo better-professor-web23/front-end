@@ -42,7 +42,7 @@ const EditAssignmentForm = (props) => {
                     onChange={handleChange}
                     value={edit.deadline}
                 />
-                <button type="submit">Update Student</button>
+                <button type="submit">Update Assignment</button>
             </form>
         </div>
     )
