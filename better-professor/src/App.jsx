@@ -19,7 +19,7 @@ import EditStudent from "./pages/EditStudent";
 function App() {
   return (
     <div >
-      <NavigationHeader />
+      <Route path='/' component={NavigationHeader} />
       <Switch>
         <Route path='/signup' component={Signup} />
         <Route path='/login' component={Login} />
