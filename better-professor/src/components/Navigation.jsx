@@ -36,10 +36,6 @@ const NavWrapper = styled.div`
 const NavigationHeader = () => {
    return (
       <Header>
-         <NavWrapper>
-            <Link to='/login'>Log In</Link>
-            <Link to='/signup'>Sign Up</Link>
-         </NavWrapper>
          <TitleWrapper>
             <HeaderTitle>Better Professor</HeaderTitle>
          </TitleWrapper>

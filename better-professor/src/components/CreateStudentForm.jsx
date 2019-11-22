@@ -37,6 +37,7 @@ const CreateStudentForm = (props) => {
             .post(`https://better-professor-back-end.herokuapp.com/students/`, add)
             .then(response => {
                 console.log('response after adding student', response.data);
+                props.history.push('/')
 
             })
     }
