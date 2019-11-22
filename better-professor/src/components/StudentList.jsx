@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import StudentCard from "./StudentCard"
+import MessageForm from "./MessageForm";
 import styled from "styled-components";
+import { connect } from 'react-redux'
+import { getStudent } from "../actions/"
 
 const Stu = styled.div`
    display: flex;
@@ -23,28 +26,23 @@ const EachStu = styled.div`
    
 `;
 
-
-
-
 const StudentList = (props) => {
-   const [students, setStudents] = useState([])
+
    console.log('lets see if this shows', props)
 
+   const id = localStorage.getItem('id')
+
    useEffect(() => {
-      const id = localStorage.getItem('id')
-      axiosWithAuth()
-         .get(`https://better-professor-back-end.herokuapp.com/students/user/${id}`)
-         .then(re => {
-            console.log(re)
-            setStudents(re.data)
-         })
+      props.getStudent(id)
+
    }, [])
    return (
       <Stu>
-         {students.map(student => {
+         {props.students.map(student => {
             return (
-               <EachStu key={student.id}>
-                  <StudentCard {...student} {...props} />
+
+               <EachStu>
+                  <StudentCard {...student} {...props}/>
                </EachStu>
             )
          })}
@@ -52,4 +50,12 @@ const StudentList = (props) => {
    )
 }
 
-export default StudentList
+export default connect( state => {
+   return {
+       students: state.students,
+       isFetching: state.isFetching,
+       error: state.assignments
+   }
+}, {getStudent}) (StudentList);
+
+

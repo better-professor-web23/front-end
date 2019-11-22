@@ -1,7 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axiosWithAuth from "../utils/axiosWithAuth";
+import { connect } from 'react-redux'
+
+import {deleteStudent} from "../actions/"
+
+
+// import {StudentContext} from "../contexts/StudentContext"
 
 const Button = styled.button`
     width: 3rem;
@@ -12,9 +18,6 @@ const Button = styled.button`
     text-decoration: none;
 `;
 
-
-
-
 const StudentCard = props => {
 
     console.log('testing out props')
@@ -24,28 +27,15 @@ const StudentCard = props => {
     const id = props.id;
 
     const deleteStudent = () => {
-        axiosWithAuth()
-            .delete(`https://better-professor-back-end.herokuapp.com/students/${id}`)
-            .then(res => {
-                console.log('deleted student', res);
-            })
-            .catch(err => console.log(err.response));
+        props.deleteStudent(id)
+        props.history.push('/')
     }
 
-    // useEffect(() => {
-    //     axiosWithAuth()
-    //        .get(`https://better-professor-back-end.herokuapp.com/students/user/${id}`)
-    //        .then(re => {
-    //           console.log(re)
-    //           setErase(re.data)
-    //        })
-    //  }, [])
 
     const EditStudent = () => {
         console.log('by god', props)
         props.history.push(`/editstudent/${id}`)
     }
-
 
     return (
         <div className="student-card">
@@ -63,4 +53,12 @@ const StudentCard = props => {
     );
 };
 
-export default StudentCard;
+export default connect( state => {
+    return {
+        students: state.students,
+        isFetching: state.isFetching,
+        error: state.assignments
+    }
+ }, {deleteStudent}) (StudentCard);
+ 
+

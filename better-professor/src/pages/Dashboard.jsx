@@ -15,6 +15,7 @@ const DashAndStu = styled.div`
 `;
 
 const Dashboard = (props) => {
+    console.log('pls help irl :/', props)
     return (
         <Page>
             <DashAndStu>
@@ -27,3 +28,4 @@ const Dashboard = (props) => {
 }
 
 export default Dashboard;
+

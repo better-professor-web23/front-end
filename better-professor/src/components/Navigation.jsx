@@ -33,14 +33,24 @@ const NavWrapper = styled.div`
    }
 `;
 
-const NavigationHeader = () => {
+const NavigationHeader = (props) => {
+   console.log('nav props', props)
+   const locationURL = props.location.pathname
+   let navLink = ''
+   if (locationURL === '/login') {
+      navLink = <Link to='/signup'>SignUp</Link>
+   } else if (locationURL === '/signup') {
+      navLink = <Link to='/login'>Login</Link>
+   } else {
+      navLink = <Link to='/'>Dashboard</Link>
+   }
    return (
       <Header>
          <TitleWrapper>
             <HeaderTitle>Better Professor</HeaderTitle>
          </TitleWrapper>
          <NavWrapper>
-            <Link to='/'>Dashboard</Link>
+            {navLink}
          </NavWrapper>
       </Header>
    )

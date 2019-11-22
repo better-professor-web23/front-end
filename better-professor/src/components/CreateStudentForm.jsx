@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import styled from "styled-components";
+import { connect } from 'react-redux'
+import {addStudent} from '../actions/'
 
 const Create = styled.div`
    display: flex;
@@ -33,13 +35,8 @@ const CreateStudentForm = (props) => {
     }
     const submitForm = event => {
         event.preventDefault();
-        axiosWithAuth()
-            .post(`https://better-professor-back-end.herokuapp.com/students/`, add)
-            .then(response => {
-                console.log('response after adding student', response.data);
-                props.history.push('/')
-
-            })
+        props.addStudent(add)
+        props.history.push('/')
     }
     return (
         <Create>
@@ -63,4 +60,11 @@ const CreateStudentForm = (props) => {
         </Create>
     )
 }
-export default CreateStudentForm;
+export default connect( state => {
+    return {
+        students: state.students,
+        isFetching: state.isFetching,
+        error: state.assignments
+    }
+}, {addStudent}) (CreateStudentForm);
+

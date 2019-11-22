@@ -30,14 +30,12 @@ const ReminderList = (props) => {
     console.log(reminders)
     const id = props.match.params.id
     useEffect(() => {
-
         axiosWithAuth()
             .get(`https://better-professor-back-end.herokuapp.com/messages/students/${id}`)
             .then(res => {
                 console.log(res);
                 setReminders([...reminders, ...res.data])
             })
-
     }, [id])
 
     return (
