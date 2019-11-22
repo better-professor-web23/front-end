@@ -45,7 +45,6 @@ const MessageForm = (props) => {
         student_id: id
     })
 
-
     const handleChange = event => {
         setMessage({ ...message, [event.target.name]: event.target.value })
     }
@@ -76,7 +75,7 @@ const MessageForm = (props) => {
                 <Label htmlFor='date'>Date:</Label>
                 <Input
                     required
-                    type="date"
+                    type="datetime-local"
                     name="date"
                     value={message.date}
                     onChange={handleChange}
