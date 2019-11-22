@@ -56,6 +56,7 @@ const MessageForm = (props) => {
             .post(`https://better-professor-back-end.herokuapp.com/messages`, message)
             .then(response => {
                 console.log('response after adding student', response.data);
+                props.history.push(`/assignments/${id}`)
             })
             .catch(err => console.log(err.response));
     }
