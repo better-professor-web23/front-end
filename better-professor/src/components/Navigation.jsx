@@ -24,7 +24,7 @@ const HeaderTitle = styled.h1`
 const NavWrapper = styled.div`
    display: flex;
    justify-content: space-evenly;
-   width: 30%;
+   width: 50%;
 
    a {
       color: white;
@@ -36,13 +36,23 @@ const NavWrapper = styled.div`
 const NavigationHeader = (props) => {
    console.log('nav props', props)
    const locationURL = props.location.pathname
+   const logOut = e => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('id')
+   }
    let navLink = ''
    if (locationURL === '/login') {
       navLink = <Link to='/signup'>SignUp</Link>
    } else if (locationURL === '/signup') {
       navLink = <Link to='/login'>Login</Link>
    } else {
-      navLink = <Link to='/'>Dashboard</Link>
+      navLink = (
+         <NavWrapper>
+            <Link to='/'>Dashboard</Link>
+            <Link to='/login' onClick={logOut}>Logout </Link>
+         </NavWrapper>
+
+      )
    }
    return (
       <Header>
