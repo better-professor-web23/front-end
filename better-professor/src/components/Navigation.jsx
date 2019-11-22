@@ -24,7 +24,7 @@ const HeaderTitle = styled.h1`
 const NavWrapper = styled.div`
    display: flex;
    justify-content: space-evenly;
-   width: 30%;
+   width: 50%;
 
    a {
       color: white;
@@ -33,18 +33,34 @@ const NavWrapper = styled.div`
    }
 `;
 
-const NavigationHeader = () => {
+const NavigationHeader = (props) => {
+   console.log('nav props', props)
+   const locationURL = props.location.pathname
+   const logOut = e => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('id')
+   }
+   let navLink = ''
+   if (locationURL === '/login') {
+      navLink = <Link to='/signup'>SignUp</Link>
+   } else if (locationURL === '/signup') {
+      navLink = <Link to='/login'>Login</Link>
+   } else {
+      navLink = (
+         <NavWrapper>
+            <Link to='/'>Dashboard</Link>
+            <Link to='/login' onClick={logOut}>Logout </Link>
+         </NavWrapper>
+
+      )
+   }
    return (
       <Header>
-         <NavWrapper>
-            <Link to='/login'>Log In</Link>
-            <Link to='/signup'>Sign Up</Link>
-         </NavWrapper>
          <TitleWrapper>
             <HeaderTitle>Better Professor</HeaderTitle>
          </TitleWrapper>
          <NavWrapper>
-            <Link to='/'>Dashboard</Link>
+            {navLink}
          </NavWrapper>
       </Header>
    )

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import StudentCard from "./StudentCard"
-import MessageForm from "./MessageForm";
 import styled from "styled-components";
 
 const Stu = styled.div`
@@ -44,11 +43,9 @@ const StudentList = (props) => {
       <Stu>
          {students.map(student => {
             return (
-
-               <EachStu>
-                  <StudentCard {...student} {...props}/>
+               <EachStu key={student.id}>
+                  <StudentCard {...student} {...props} />
                </EachStu>
-
             )
          })}
       </Stu>

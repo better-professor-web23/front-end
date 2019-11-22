@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {Link} from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
@@ -24,12 +24,12 @@ const StudentCard = props => {
     const id = props.id;
 
     const deleteStudent = () => {
-    axiosWithAuth()
-    .delete(`https://better-professor-back-end.herokuapp.com/students/${id}`)
-    .then(res => {
-        console.log('deleted student', res);
-    })
-    .catch(err => console.log(err.response));
+        axiosWithAuth()
+            .delete(`https://better-professor-back-end.herokuapp.com/students/${id}`)
+            .then(res => {
+                console.log('deleted student', res);
+            })
+            .catch(err => console.log(err.response));
     }
 
     // useEffect(() => {
@@ -57,7 +57,7 @@ const StudentCard = props => {
             <Button onClick={EditStudent}>Edit</Button>
             <Button onClick={deleteStudent}>Delete</Button>
 
-        </div>    
+        </div>
 
 
     );

@@ -4,6 +4,7 @@ import axiosWithAuth from "../utils//axiosWithAuth";
 
 const EditAssignmentForm = (props) => {
     const id = props.match.params.id
+    const student_id = props.match.params.student_id
     console.log('edit form id', props.match)
     const [edit, setEdit] = useState({
         project_name: '',
@@ -21,6 +22,7 @@ const EditAssignmentForm = (props) => {
             .put(`https://better-professor-back-end.herokuapp.com/projects/${id}`, edit)
             .then(response => {
                 console.log('response after adding student', response.data);
+                props.history.push(`/assignments/${student_id}`)
             })
         console.log('edit', edit);
     }
