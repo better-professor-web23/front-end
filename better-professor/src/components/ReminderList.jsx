@@ -13,8 +13,7 @@ const Title = styled.h1`
 `;
 const MessagesCard = styled.div`
     width: 30%;
-    border: 2px solid blue;
-    border-radius: 1rem;
+    border: 2px solid black;
     padding: 2%;
     margin: 2% 0;
 `;
