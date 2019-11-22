@@ -6,41 +6,58 @@ import styled from "styled-components";
 
 
 
-
-
-
-const SignUpform = styled.div`
-
+const Main = styled.div`
+height: 89vh;
+background-color: #fff;
 display: flex;
-border: 0.8rem solid #5DADE2;
-background-color: #E9F7EF;
-width: 18rem;
-height: 25rem;
-padding: 1rem 0;
-margin:0 20rem;
-text-decoration: none;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+text-align: center;
 
+
+`
+
+const Form2 = styled(Form)`
+border: 1px solid black;
+background-color: #ffffff;
+padding: 20px;
 `;
 
-
-const SignUpButton = styled.button`
-width: 6rem;
-margin: 2% auto;
-color: white;
-background-color: blue;
-font-size: 1rem;
-margin: .7rem auto;
-`;
-
-const FormDets = styled(Form)`
-  display:flex;
-  justify-content: center; 
-  flex-direction: column;
-  align-items: center;
-  margin:0 4rem;
-`;
+const Input = styled(Field)`
+margin: 3%;
 
 
+`
+const Title = styled.h3`
+text-align: center;
+margin: 10%;
+`
+const Text = styled.div`
+display: flex;
+flex-direction: column;
+padding: 60px;
+`
+
+const Input2 = styled(Field)`
+width: 100%;
+margin-top: 5%;
+margin-bottom: 5%;
+`
+
+const Buttonc = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+`
+const Button = styled.button`
+background-color: #4169E1;
+color: #fff;
+width: 100%;
+text-align: center;
+padding: 5%;
+margin-top: 30%;
+`
 
 
 const SignupForm = ({ values, errors, touched, status }) => {
@@ -53,42 +70,36 @@ const SignupForm = ({ values, errors, touched, status }) => {
 
     return (
 
-        <SignUpform className="user-form">
-            <FormDets>
-                <p>Username</p>
-                <Field type="text" name="username" placeholder="username" />
+        <Main className="user-form">
+            <Form2 >
+                <Title>Register</Title>
+                <Text>
+                <Input2 type="text" name="username" placeholder="Create a Username" />
                 {touched.username && errors.username && (
                     <p className="errors"> {errors.username}</p>
                 )}
-                <p>Password</p>
-                <Field type="password" name="password" placeholder="password" />
+                <Input2 type="password" name="password" placeholder="Create a Password " />
                 {touched.password && errors.password && (
                     <p className="errors"> {errors.password}</p>
                 )}
-                <p>First Name</p>
-                <Field type="text" name="first_name" placeholder="first name" />
+                <Input2 type="text" name="first_name" placeholder="Enter Your First Name" />
                 {touched.first_name && errors.first_name && (
                     <p className="errors"> {errors.first_name}</p>
                 )}
-                <p>Last Name</p>
-                <Field type="text" name="last_name" placeholder="last name" />
+                <Input2 type="text" name="last_name" placeholder="Enter Your Last Name" />
                 {touched.last_name && errors.last_name && (
                     <p className="errors"> {errors.last_name}</p>
                 )}
+                <Buttonc>
+                    <Button >Sign Up</Button>
+                </Buttonc>
+                </Text>
+            </Form2>
 
-                <SignUpButton type='submit'>Sign Up</SignUpButton>
-            </FormDets>
-            {user.map(user => (
-                <ul key={user.id}>
-                    <li>Username: {user.username}</li>
-                    <li>Password: {user.password}</li>
-                    <li>First Name: {user.first_name}</li>
-                    <li>Last Name: {user.last_name}</li>
-                </ul>
-            ))}
-        </SignUpform>
+        </Main>
     );
 };
+
 
 const FormikUserForm = withFormik({
     mapPropsToValues({ username, password, first_name, last_name }) {

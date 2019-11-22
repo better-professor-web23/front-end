@@ -21,28 +21,26 @@ const Title = styled.h1`
 
 const AssignmentCardDiv = styled.div`
    width: 45%;
-   border: 2px solid blue;
-   border-radius: 1rem;
+   border: 2px solid black;
    margin: 2% 0;
    display:flex;
    flex-wrap:wrap;
    padding: 2%;
 `
 
-const AssignmentNameH2 = styled.h2`
+const AssignmentNameH2 = styled.p`
    width: 100%;
 `
 
-const AssignmentDeadlineH3 = styled.h3`
+const AssignmentDeadlineH3 = styled.p`
    width: 100%;
 `
 const Button = styled.button`
    width: 30%;
    margin: 2% auto;
    color: white;
-   background-color: blue;
+   background-color: #4169E1;
    font-size: 1.2rem;
-   border-radius: 1rem;
 `;
 
 const AssignmentList = (props) => {
@@ -94,7 +92,7 @@ const AssignmentList = (props) => {
          {assignmentList.map(item => {
             return (
                <AssignmentCardDiv key={item.id}>
-                  <AssignmentNameH2>{item.project_name}</AssignmentNameH2>
+                  <AssignmentNameH2>Assignment:{item.project_name}</AssignmentNameH2>
                   <AssignmentDeadlineH3>Deadline: {item.deadline}</AssignmentDeadlineH3>
                   <Button value={item.id} onClick={editAssignment}>Edit </Button>
                   <Button value={item.id} onClick={deleteAssignment}>Delete</Button>

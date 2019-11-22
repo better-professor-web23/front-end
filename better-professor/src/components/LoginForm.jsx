@@ -2,33 +2,50 @@ import React, { useState } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import styled from "styled-components";
 
-const LoginButton = styled.button`
-width: 4rem;
-margin: 2% auto;
-color: white;
-background-color: blue;
-font-size: 1rem;
-margin: .7rem;
-`;
 
-const Login = styled.div`
-   display: flex;
-   border: 0.8rem solid #5DADE2;
-   background-color: #E9F7EF;
-   width: 15rem;
-   padding: 1rem 0;
-   margin:0 20rem;
-   margin-top: 2rem;
-   text-decoration: none;
-`;
+const Main = styled.div`
+height: 89vh;
+background-color: #fff;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+text-align: center;
+`
+const Form2 = styled.form`
+border: 1px solid black;
+background-color: #fff;
+padding: 20px;
+`
+const Title = styled.h3`
+text-align: center;
+margin: 10%;
+`
+const Text = styled.div`
+display: flex;
+flex-direction: column;
+padding: 60px;
+`
+const Input = styled.input`
+width: 100%;
+margin-top: 5%;
+margin-bottom: 5%;
+`
 
-const FormDetails = styled.form`
-  display:flex;
-  justify-content: center; 
-  flex-direction: column;
-  align-items: center;
-  margin:0 2.7rem;
-`;
+const Buttonc = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+`
+const Button = styled.button`
+background-color: #4169E1;
+color: #fff;
+width: 100%;
+text-align: center;
+padding: 5%;
+margin-top: 30%;
+`
+
 
 const LoginForm = (props) => {
 
@@ -58,29 +75,30 @@ const LoginForm = (props) => {
   }
 
   return (
-    <>
-      <Login>
-        <FormDetails onSubmit={handleSubmit}>
-          <p>Username</p>
-          <input
+    <Main>
+      <Form2>
+        <Title>Login</Title>
+        <Text onSubmit={handleSubmit}>
+          <Input
             type="text"
             name="username"
             placeholder="Username"
             value={login.username}
             onChange={handleChange}
           />
-          <p>Password</p>
-          <input
+          <Input
             type="password"
             name="password"
             placeholder="Password"
             value={login.password}
             onChange={handleChange}
           />
-          <LoginButton type="submit">Login</LoginButton>
-        </FormDetails>
-      </Login>
-    </>
+          <Buttonc>
+            <Button onClick={handleSubmit}>Login</Button>
+          </Buttonc>
+        </Text>
+      </Form2>
+    </Main>
   );
 };
 
