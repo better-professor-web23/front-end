@@ -74,6 +74,13 @@ const AssignmentList = (props) => {
       props.history.push(`/assignments/${student_id}/editassignment/${id}`)
    }
 
+   const Processing = id => {
+      props.history.push('/loading');
+      setTimeout(()=>{
+          props.history.push(`/assignments/${id}`)
+      }, 1000) 
+  }   
+
    const deleteAssignment = event => {
       const id = event.target.value
       console.log('props.match.params', props.match.params);
@@ -81,9 +88,14 @@ const AssignmentList = (props) => {
          .delete(`https://better-professor-back-end.herokuapp.com/projects/${id}`)
          .then(res => {
             console.log('deleted assignment ', res);
+            Processing(id)
          })
          .catch(err => console.log(err.response));
+
    }
+
+  
+
 
 
    return (

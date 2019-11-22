@@ -15,6 +15,7 @@ import Signup from "./pages/Signup";
 import NavigationHeader from './components/Navigation'
 import EditAssignment from "./pages/EditAssignment";
 import EditStudent from "./pages/EditStudent";
+import Loading from "./pages/Loading";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <PrivateRoute path='/message/:id' component={Message} />
         <PrivateRoute path='/assignments/:student_id/editassignment/:id' component={EditAssignment} />
         <PrivateRoute path='/editstudent/:id' component={EditStudent} />
+        <PrivateRoute path='/loading' component={Loading} />
       </Switch>
     </div>
   );
