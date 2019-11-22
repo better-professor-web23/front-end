@@ -27,9 +27,17 @@ const StudentCard = props => {
 
     const id = props.id;
 
+    const Processing = () => {
+        props.history.push('/loading');
+
+        setTimeout(()=>{
+            props.history.push('/')
+        }, 1000) 
+    }   
+
     const deleteStudent = () => {
         props.deleteStudent(id)
-        props.history.push('/')
+        Processing()
     }
 
 
