@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import axiosWithAuth from "../utils/axiosWithAuth"
+import styled from "styled-components";
 
 const EditStudentForm = (props) => {
     console.log('what is being passed to editstudentform', props);
@@ -31,8 +32,7 @@ const EditStudentForm = (props) => {
     }
 
     return (
-        <div>
-            <h1 >Edit Student</h1>
+        <Container>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -48,11 +48,26 @@ const EditStudentForm = (props) => {
                     onChange={handleChange}
                     value={edit.major}
                 />
-                <button type="submit">Edit Student</button>
+                <Button type="submit">Edit Student</Button>
             </form>
-        </div>
+        </Container>
     )
 }
 
 
 export default EditStudentForm;
+
+const Button = styled.button`
+background-color: #4169E1;
+color: #fff;
+
+`
+
+const Container = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+
+
+`

@@ -4,13 +4,13 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 
 const FormWrapper = styled.div``;
 const Form = styled.form`
-    max-width: 700px;
+    max-width: 500px;
     margin: 10% auto;
     height: 20rem;
     display:flex;
     flex-direction: column;
     justify-items: center;
-    border: 3px solid blue;
+    border: 1px solid black;
     border-radius: 2rem;
     padding: 2rem;
 `;
@@ -32,8 +32,9 @@ const Button = styled.button`
     width: 30%;
     margin: 2% auto;
     color: white;
-    background-color: blue;
+    background-color: #4169E1;
     font-size: 1.5rem;
+    
 `;
 const MessageForm = (props) => {
     console.log('whats coming through to messages?', props);
@@ -87,3 +88,4 @@ const MessageForm = (props) => {
 }
 
 export default MessageForm;
+

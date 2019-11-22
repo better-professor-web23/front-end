@@ -18,10 +18,9 @@ const EachStu = styled.div`
    display: flex;
    justify-content: center;
    align-items: center;
-   border: 0.8rem solid #5DADE2;
-   background-color: #E9F7EF;
+   border: 0.3rem solid #4169E1;
    width: 13rem;
-   padding: 1rem 0;
+   padding: 2%;
    margin: 1rem 0;
    
 `;

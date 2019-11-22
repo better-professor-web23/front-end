@@ -7,13 +7,14 @@ import { connect } from 'react-redux'
 import {deleteStudent} from "../actions/"
 
 
+
 // import {StudentContext} from "../contexts/StudentContext"
 
 const Button = styled.button`
     width: 3rem;
     margin: 2% auto;
-    color: white;
-    background-color: blue;
+    background-color: #4169E1;
+    color: #fff;
     font-size: 0.7rem;
     text-decoration: none;
 `;
@@ -39,13 +40,16 @@ const StudentCard = props => {
 
     return (
         <div className="student-card">
-            <h2>Student</h2>
             <div>
-                <Link to={`/assignments/${props.id}`}>Name: {props.student_name}</Link>
+                <h3>{props.student_name}</h3>
                 <p>Major: {props.major}</p>
             </div>
             <Button onClick={EditStudent}>Edit</Button>
             <Button onClick={deleteStudent}>Delete</Button>
+            <Link to= {`/assignments/${props.id}`}>
+                <Button>View </Button>
+            </Link>
+   
 
         </div>
 

@@ -5,23 +5,19 @@ import { connect } from 'react-redux'
 import {addStudent} from '../actions/'
 
 const Create = styled.div`
-   display: flex;
-   border: 0.8rem solid #5DADE2;
-   background-color: #E9F7EF;
-   width: 17rem;
-   padding: 1rem 0;
-   margin:0 20rem;
-   text-decoration: none;
+ border: 1px solid black;
+ height: 89vh;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
 `;
 
-const CreateDets = styled.form`
-  display:flex;
-  justify-content: center; 
-  flex-direction: column;
-  align-items: center;
-  margin:0 2.7rem;
-`;
+const Button = styled.button`
+background-color: #4169E1;
+color: #fff;
 
+`
 
 const CreateStudentForm = (props) => {
     const userId = localStorage.getItem('id')
@@ -40,7 +36,7 @@ const CreateStudentForm = (props) => {
     }
     return (
         <Create>
-            <CreateDets onSubmit={submitForm}>
+            <form onSubmit={submitForm}>
                 <input
                     type="text"
                     name="student_name"
@@ -55,8 +51,8 @@ const CreateStudentForm = (props) => {
                     value={add.major}
                     onChange={handleChange}
                 />
-                <button type="submit">Create Student</button>
-            </CreateDets>
+                <Button type="submit">Create Student</Button>
+            </form>
         </Create>
     )
 }

@@ -4,9 +4,9 @@ import styled from 'styled-components';
 
 const Header = styled.header`
    display: flex;
-   justify-content: space-evenly;
+   justify-content: space-around;
    align-items: center;
-   background-color: blue;
+   background-color: #4169E1;
    color: white;
    
 `;
@@ -38,7 +38,7 @@ const NavigationHeader = (props) => {
    const locationURL = props.location.pathname
    let navLink = ''
    if (locationURL === '/login') {
-      navLink = <Link to='/signup'>SignUp</Link>
+      navLink = <Link to='/signup'>Register</Link>
    } else if (locationURL === '/signup') {
       navLink = <Link to='/login'>Login</Link>
    } else {
