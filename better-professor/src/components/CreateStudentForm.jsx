@@ -29,11 +29,20 @@ const CreateStudentForm = (props) => {
     const handleChange = event => {
         setAdd({ ...add, [event.target.name]: event.target.value })
     }
+
+    const Processing = id => {
+        props.history.push('/loading');
+        setTimeout(()=>{
+            props.history.push(`/`)
+        }, 1000) 
+    }   
     const submitForm = event => {
         event.preventDefault();
         props.addStudent(add)
-        props.history.push('/')
+        Processing()
     }
+
+ 
     return (
         <Create>
             <form onSubmit={submitForm}>
